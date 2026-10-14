@@ -12,6 +12,8 @@ COPY requirements.txt requirements-postgres.txt ./
 RUN pip install --no-cache-dir -r requirements-postgres.txt \
     && groupadd --gid 10001 olympiados \
     && useradd --uid 10001 --gid olympiados --create-home olympiados \
+    && (getent group 1000 >/dev/null || groupadd --gid 1000 render-secrets) \
+    && usermod -a -G 1000 olympiados \
     && mkdir -p /tmp/olympiados \
     && chown olympiados:olympiados /tmp/olympiados
 COPY --chown=olympiados:olympiados . .
