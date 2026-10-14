@@ -24,6 +24,11 @@ config.set_main_option('sqlalchemy.url', settings.database_url.replace('%', '%%'
 target_metadata = Base.metadata
 
 
+def include_object(object, name, type_, reflected, compare_to):
+    # Alembic owns its migration marker; it is not an application model table.
+    return not (type_ == 'table' and name == 'alembic_version' and reflected)
+
+
 def run_migrations_offline():
     postgres = not settings.database_url.startswith('sqlite')
     context.configure(url=config.get_main_option('sqlalchemy.url'), target_metadata=target_metadata, literal_binds=True,
@@ -46,6 +51,7 @@ def run_migrations_online():
             connection.commit()
         context.configure(connection=connection, target_metadata=target_metadata,
                           render_as_batch=not postgres, compare_type=True,
+                          include_object=include_object,
                           version_table_schema=settings.db_schema if postgres else None)
         with context.begin_transaction():
             context.run_migrations()
