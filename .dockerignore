@@ -16,3 +16,5 @@ test-results
 *.pem
 *.key
 backups
+# Render uploads this certificate separately as a runtime secret file.
+postgres-ca.crt
