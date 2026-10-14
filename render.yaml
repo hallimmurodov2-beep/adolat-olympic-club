@@ -3,6 +3,7 @@ services:
   - type: web
     name: adolat-olympic-club
     runtime: docker
+    region: frankfurt
     plan: free
     dockerfilePath: ./Dockerfile
     healthCheckPath: /api/ready
