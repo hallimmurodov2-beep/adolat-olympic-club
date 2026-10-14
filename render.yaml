@@ -1,0 +1,38 @@
+# Development candidate only: finish docs/RELEASE-GATES.md before school use.
+services:
+  - type: web
+    name: adolat-olympic-club
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /api/ready
+    autoDeployTrigger: "off"
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: APP_ORIGIN
+        sync: false
+      - key: APP_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        sync: false
+      - key: DB_SCHEMA
+        value: olympiados
+      - key: DB_POOL_SIZE
+        value: "2"
+      - key: DB_MAX_OVERFLOW
+        value: "1"
+      - key: STORAGE_BACKEND
+        value: supabase
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_STORAGE_BUCKET
+        value: olympiados-attachments
+      - key: SUPABASE_STORAGE_SERVER_KEY
+        sync: false
+      - key: CODEFORCES_ENABLED
+        value: "true"
+      - key: CODEFORCES_SYNC_ENABLED
+        value: "false"
+      - key: TRUSTED_PROXY_IPS
+        sync: false

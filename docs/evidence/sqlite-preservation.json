@@ -1,0 +1,143 @@
+{
+  "status": "passed",
+  "source": "fresh V1 synthetic demo, not school data",
+  "database": "SQLite -> SQLite, not PostgreSQL/Supabase",
+  "original_tables_checked": 32,
+  "all_original_column_row_hashes_match": true,
+  "foreign_keys_and_integrity": "passed",
+  "new_revision": "c16a7f429444",
+  "derived_subject_memberships": 6,
+  "alembic_drift": "none",
+  "tables": {
+    "activities": {
+      "count": 5,
+      "sha256_preserved_columns": "ba83344a7b3dbb43016906267155ba679fa8ab3eb901f2d0098bfd45473204fc"
+    },
+    "activity_items": {
+      "count": 8,
+      "sha256_preserved_columns": "8c06082f9f8a7896c6ed29351708f5ffce867e360a893b4d42b95ce8966a4553"
+    },
+    "announcements": {
+      "count": 3,
+      "sha256_preserved_columns": "49bf494c507be397fe9938b79eaae7f66797a9e5fe3c7917db366d6b71d533bc"
+    },
+    "audit_logs": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "auth_sessions": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "classrooms": {
+      "count": 3,
+      "sha256_preserved_columns": "6de65cbd91bb97d0bc334ad4c5035d50c34e1da78a5658ec742883da19aa4c89"
+    },
+    "club_settings": {
+      "count": 1,
+      "sha256_preserved_columns": "ab49bead1db54f3430a6bbff48536720412ac1160716ea27f90c1773fdb4271a"
+    },
+    "document_revisions": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "drafts": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "events": {
+      "count": 3,
+      "sha256_preserved_columns": "37ae98fcb93b30bb0f7ccc55df9da8a4fe02396e828ee1002d3f8ad9c308ffce"
+    },
+    "grade_revisions": {
+      "count": 1,
+      "sha256_preserved_columns": "64658ba25e2a4e21da4c7f2d0cf6e66bde015fe0523bbd2fcc237ea5f576ead3"
+    },
+    "group_comments": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "group_documents": {
+      "count": 1,
+      "sha256_preserved_columns": "de7f5cbe16f4f3b91fee1ca4059064514327cfeb24198c75d46ce6d39497ac4f"
+    },
+    "group_members": {
+      "count": 2,
+      "sha256_preserved_columns": "3d476360b9fe5d1988fe457b19dc7994adba98b43b1252770f5ac0d0471221c9"
+    },
+    "groups": {
+      "count": 1,
+      "sha256_preserved_columns": "8334869d85e56e1bcb62c34190f2ea1ae6cab08df3edd3fed595db0b5ee6a4ed"
+    },
+    "help_requests": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "invitations": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "memberships": {
+      "count": 6,
+      "sha256_preserved_columns": "0bf2f9ad1bc9b433ca395ab6e2a123483699d9b6065634fc83d32987bb3c1500"
+    },
+    "notifications": {
+      "count": 3,
+      "sha256_preserved_columns": "764def39fd2c01fc3d5e6ed324f017a4f9f1770eb0e3f1235fa82a5b7e0cc6b0"
+    },
+    "participants": {
+      "count": 2,
+      "sha256_preserved_columns": "14ae9085cec249f1b02fa85202051ff969ea6beec355b7130c3ebe143b462eca"
+    },
+    "problem_sets": {
+      "count": 1,
+      "sha256_preserved_columns": "bf8aaf5029c0d20c450d9a9f03d7576786c61625fed6096925004241644ae6ce"
+    },
+    "problems": {
+      "count": 6,
+      "sha256_preserved_columns": "893dc5b457ae17c00c2e9e4352f0a8e1c7329e3605b993c9bcd1544f8c75f3b5"
+    },
+    "rate_limits": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "resources": {
+      "count": 3,
+      "sha256_preserved_columns": "1ea9f640a4b9e92bbc01038ced0b17803cef6355006d58b1398b4968d4088d5e"
+    },
+    "set_items": {
+      "count": 3,
+      "sha256_preserved_columns": "caa6378c098cef9f9d488eb3ed3c31ab492c6eb9b6ed8a9b74cdc53070f884b3"
+    },
+    "stored_files": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "subjects": {
+      "count": 3,
+      "sha256_preserved_columns": "029e84e731931e68e2268329ddadc0ffdd6bf277ee8b6743aedcdfaf409e66e3"
+    },
+    "submission_files": {
+      "count": 0,
+      "sha256_preserved_columns": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    "submission_members": {
+      "count": 2,
+      "sha256_preserved_columns": "f8b4ed4ec5cbe63beebcb72a1fb42b9de0e903c312ff076a26ccf631e318946e"
+    },
+    "submissions": {
+      "count": 2,
+      "sha256_preserved_columns": "7143fb60603e5a5e66b62b8b4e3824990e730a70845c4d01f2da09edba7af907"
+    },
+    "topics": {
+      "count": 12,
+      "sha256_preserved_columns": "0aec11509da9d450f83c4230ae61315601a9e133e89cc6abc82c802253b9739a"
+    },
+    "users": {
+      "count": 6,
+      "sha256_preserved_columns": "b4aa9a50a5bcb5cbecf964461ed70ba665ea1c6f92ecf067d6123137747103a8"
+    }
+  },
+  "object_migration_tested": false,
+  "production_import_or_backup_tool": false
+}

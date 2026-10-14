@@ -1,0 +1,44 @@
+# LOCAL DEVELOPMENT ONLY — not the Supabase/Render production configuration.
+# Explicit initialization is required; see docs/DEPLOYMENT.md. Never import school data here.
+services:
+  database:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: olympiados
+      POSTGRES_USER: olympiados
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Set a random development-only hexadecimal POSTGRES_PASSWORD}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    healthcheck:
+      test: [CMD-SHELL, "pg_isready -U olympiados -d olympiados"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+    # No host port. This isolated local owner connection is NOT a production runtime role.
+  app:
+    build: .
+    restart: unless-stopped
+    init: true
+    depends_on:
+      database:
+        condition: service_healthy
+    environment:
+      APP_ENV: development
+      APP_ORIGIN: http://localhost:8000
+      APP_SECRET: ${APP_SECRET:?Generate a unique development APP_SECRET}
+      DATABASE_URL: postgresql+psycopg://olympiados:${POSTGRES_PASSWORD:?}@database:5432/olympiados
+      DB_SCHEMA: olympiados
+      STORAGE_BACKEND: local
+      DATA_DIR: /tmp/olympiados
+      CODEFORCES_ENABLED: "true"
+      CODEFORCES_SYNC_ENABLED: "false"
+    volumes:
+      - private-uploads:/tmp/olympiados
+    ports:
+      - 127.0.0.1:8000:8000
+    security_opt:
+      - no-new-privileges:true
+volumes:
+  postgres-data:
+  private-uploads:

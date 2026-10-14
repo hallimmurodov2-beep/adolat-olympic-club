@@ -1,0 +1,1039 @@
+{
+  "product": "Adolat Olympic Club",
+  "delivery": "post-M1 source continuation; not final V2 or authorized production cutover",
+  "date": "2026-10-14",
+  "input_archive_filename": "Adolat_Olympic_Club_V2_M1_Development(1).zip",
+  "input_archive_sha256": "d8adc784bb1382e2c8326a32508bd10ccc9abfb4871263b58670a78b96230b5e",
+  "alembic_head": "d84f103f71aa",
+  "verification": {
+    "backend_sqlite_pytest": "147 passed",
+    "informatics_browser_supplementary_bridge": "12 passed",
+    "hub_responsive_320_360_390_768_1024_1440": "2 RU/EN checks passed",
+    "typescript": "pass",
+    "frontend_build": "pass",
+    "native_browser_full": "not verified",
+    "production_postgresql_storage": "not verified",
+    "codeforces_live": "not verified",
+    "school_data_migration": "not implemented",
+    "real_student_pilot": "not conducted"
+  },
+  "comparison_to_attached_M1": {
+    "added": [
+      "CHECKPOINT_MANIFEST_M1.json",
+      "docs/RECOVERY-PILOT.md",
+      "docs/V2-CONTINUATION-COMPLETION.md",
+      "docs/evidence-continuation/backend-147-passed.log",
+      "docs/evidence-continuation/hub-screenshots-bridge-2-passed.log",
+      "docs/evidence-continuation/informatics-browser-bridge-12-passed.log",
+      "docs/evidence-continuation/retained-teaching-browser-bridge-16-passed.log",
+      "docs/screenshots-continuation/README.md",
+      "docs/screenshots-continuation/informatics-hub-en-dark.png",
+      "docs/screenshots-continuation/informatics-hub-ru-dark.png",
+      "docs/screenshots-continuation/informatics-mobile-en-dark.png",
+      "docs/screenshots-continuation/informatics-mobile-ru-dark.png",
+      "migrations/versions/d84f103f71aa_v2_teaching_enrollment_and_recovery.py",
+      "scripts/recovery.py",
+      "tests/test_v2_continuation.py",
+      "tests/test_v2_recovery.py"
+    ],
+    "modified": [
+      "README.md",
+      "docs/IMPLEMENTATION_STATUS.md",
+      "docs/TEST_REPORT.md",
+      "frontend/app.ts",
+      "frontend/pages-activities.ts",
+      "frontend/pages-codeforces.ts",
+      "frontend/pages-library.ts",
+      "frontend/pages-operations.ts",
+      "frontend/pages-review.ts",
+      "frontend/types.ts",
+      "locales/en.json",
+      "locales/ru.json",
+      "server/models.py",
+      "server/routes/activities.py",
+      "server/routes/auth.py",
+      "server/routes/library.py",
+      "server/routes/work.py",
+      "server/schemas.py",
+      "server/services/readiness.py",
+      "server/services/serialize.py",
+      "static/assets/app.js",
+      "static/assets/app.js.map",
+      "static/assets/pages-activities.js",
+      "static/assets/pages-activities.js.map",
+      "static/assets/pages-codeforces.js",
+      "static/assets/pages-codeforces.js.map",
+      "static/assets/pages-library.js",
+      "static/assets/pages-library.js.map",
+      "static/assets/pages-operations.js",
+      "static/assets/pages-operations.js.map",
+      "static/assets/pages-review.js",
+      "static/assets/pages-review.js.map",
+      "static/styles.css",
+      "tests/test_v2_browser.py"
+    ],
+    "removed": []
+  },
+  "files": {
+    ".dockerignore": {
+      "sha256": "e84dfdc849b2b798806c9e483a464e17b2778253e6faee65334025691d91fea2",
+      "size": 156
+    },
+    ".env.example": {
+      "sha256": "9aa4027446c4ed78cc215afec67726b66fa2dd8d4ac463f777cade649123a51e",
+      "size": 519
+    },
+    ".env.production.example": {
+      "sha256": "8b5a5e9b563bd03135b3bb3799b242c50c7d259cf0b7323b18b77d1e735c0129",
+      "size": 1264
+    },
+    ".github/workflows/ci.yml": {
+      "sha256": "eb0aa3e4b4985dbe4f13027e4ad3fccc93aa6c455a49ce31897ea9470eaf7a7d",
+      "size": 1987
+    },
+    ".gitignore": {
+      "sha256": "224d7f99d28379c8440462817502af7379765301c7bf11a60851ef3620753ab8",
+      "size": 402
+    },
+    "BUILD.txt": {
+      "sha256": "5825b5a727b03e528348d9c3864e931e78cc6e0615ae2abc77355bcb579a74b0",
+      "size": 507
+    },
+    "CHECKPOINT_MANIFEST_M1.json": {
+      "sha256": "2b606f6be7dae81ec7ca687c53e86fe99fc39fe5158d4bddd89397bf39b2c62b",
+      "size": 34158
+    },
+    "Dockerfile": {
+      "sha256": "d77d15024f8ed77325288caf6516f6f4433abe05c037055acc1ccdd711579400",
+      "size": 997
+    },
+    "LICENSE": {
+      "sha256": "7cb6be5fa73da45de5a41b1eeb6c194602c6204145c45ddbce58ac8c7017f68b",
+      "size": 1080
+    },
+    "README.md": {
+      "sha256": "4420bbc6383a8ae9acb8e2fa755217f9c0c49dc53f4b5bdbd10511ec9687853d",
+      "size": 7021
+    },
+    "THIRD_PARTY_NOTICES.md": {
+      "sha256": "0db743ee11c360b2122a5dd773a9d3ecbe6e05cb09d54ccbea0279b7febcdeb0",
+      "size": 1661
+    },
+    "alembic.ini": {
+      "sha256": "49d7bfdff2ab91e245b4a1355557fa4b4043a2ec5dcf6ce0a52cb935df07fe94",
+      "size": 587
+    },
+    "compose.yaml": {
+      "sha256": "8c572a8c2549dec6ac235c4c059dc739ec9a574f4c30a4c02082b64ea14da924",
+      "size": 1463
+    },
+    "docs/ARCHITECTURE.md": {
+      "sha256": "d27182b192814c7a035189aaf1e157d0169c98a12bba1fa29e9636bb037e7296",
+      "size": 4885
+    },
+    "docs/Caddyfile.example": {
+      "sha256": "5fb132eeeaaaa9df11be8eb44d07b69e066b50e7a1a798a772b999833574eb49",
+      "size": 295
+    },
+    "docs/DELIVERY.md": {
+      "sha256": "ca462c15095e8e7306231b222b1835ca4ce7524fc11a18b4902b6d2a2ba743a6",
+      "size": 10989
+    },
+    "docs/DEPLOYMENT.md": {
+      "sha256": "2168386b32fb474734bb8e81976aaf0e1d254d0575bed89443aef00becdc69a9",
+      "size": 5337
+    },
+    "docs/GUIDE.en.md": {
+      "sha256": "d41673c207192958690b6055de7b9d24649d4d973b9a7053a7586c16b43c4587",
+      "size": 12682
+    },
+    "docs/GUIDE.ru.md": {
+      "sha256": "35dc011dc1cb5457341c045419a49a6edd05f319f9dab51f2e77db6e4ef93554",
+      "size": 23761
+    },
+    "docs/IMPLEMENTATION_STATUS.md": {
+      "sha256": "5c376cb6ad13f596a5155357ce38df50797a7fdd2911b12740868728ad276850",
+      "size": 10040
+    },
+    "docs/M1-PILOT.md": {
+      "sha256": "e6775a539a00fb670d00026f5e83aedfe769dc83d94ac086cbb5db8eef23156a",
+      "size": 4092
+    },
+    "docs/RECOVERY-PILOT.md": {
+      "sha256": "b44a16a804415bef9ed7ee2a914da76952485d88eb9536a0555444289c20dc8a",
+      "size": 3508
+    },
+    "docs/RELEASE-GATES.md": {
+      "sha256": "f27c0ad4c785f84bd9dc4cb66592c5cd628b41207a7e7d014afa74c5dde953d0",
+      "size": 3612
+    },
+    "docs/SECURITY.md": {
+      "sha256": "5815b34b57752626ca1a85facf529bb8275eedbbc4cbf7d57143386271eec0a0",
+      "size": 6346
+    },
+    "docs/STATUS.md": {
+      "sha256": "466d2417d36d34a7980ef06a3741629786e85e208364c9634b3e83d23b9b4167",
+      "size": 464
+    },
+    "docs/TEST_REPORT.md": {
+      "sha256": "eee49d0bbdde04578a8ed8285aa44952ae6a93cfda9b7863b8c56fbd5e4d757e",
+      "size": 10719
+    },
+    "docs/V2-CONTINUATION-COMPLETION.md": {
+      "sha256": "46102a6c20c7aed4c2de31b78b138b3a5dc9834465346bad93bddcecfe53a3b4",
+      "size": 10467
+    },
+    "docs/evidence/README.md": {
+      "sha256": "82b24ea0cf7331cf2207a59c69e956f16eecdc99bbc0ea5e706e32db56ee553e",
+      "size": 769
+    },
+    "docs/evidence/backend-exit.json": {
+      "sha256": "1a3a2bdc1611a62e7f7f1752bf8606dd56b5ad2938abb9e3d973294d5949ca09",
+      "size": 360
+    },
+    "docs/evidence/backend.log": {
+      "sha256": "cd1200bc6d8172d7fe4bf706c8276740d1d1f34c7a687107f99fad901576340d",
+      "size": 181
+    },
+    "docs/evidence/backend.xml": {
+      "sha256": "f7434017524c7ab83871bd2be2c8afa95052109efb45c7aba02b0df2af3cd478",
+      "size": 17024
+    },
+    "docs/evidence/browser-bridge.xml": {
+      "sha256": "04f5f8ea0046371522b2b6ce0446cb68c9c7c2b49dba5d855874a25949964372",
+      "size": 3249
+    },
+    "docs/evidence/browser-exit.json": {
+      "sha256": "14d06f49834812074dc840fa9af460b864c03e814e309d0db13c1987972cf753",
+      "size": 354
+    },
+    "docs/evidence/browser-native-blocked.log": {
+      "sha256": "f78ebc7431f94e7e313e9ae2f44eb0a4134c1aefe2d2c1880978d7b1b6334b8a",
+      "size": 3631
+    },
+    "docs/evidence/browser.log": {
+      "sha256": "7af4f1f7d6c19fea1e0502c919a6734acb8b776cc334bbd941d6f4b2c06730ad",
+      "size": 111
+    },
+    "docs/evidence/build.log": {
+      "sha256": "f1376f7efd606d26ee677cefa3e7b5704c4426dbcf4f6835d5002d1eea031be5",
+      "size": 47
+    },
+    "docs/evidence/environment.json": {
+      "sha256": "81fe2da2ca6cc60cf11364c89fa774b8f9903e9b3bef24e4d7e73e73e9a403e0",
+      "size": 637
+    },
+    "docs/evidence/npm-offline-lock-blocked.log": {
+      "sha256": "6428db2777aadc5daace6c2ba80fadb26faa103226b21771b2599b4b82fc758d",
+      "size": 273
+    },
+    "docs/evidence/postgres-driver-install-blocked.log": {
+      "sha256": "66bf31611b4e66b0bedb6e33080451616d90fc0c7dc63055f999001535c92d9b",
+      "size": 2011
+    },
+    "docs/evidence/postgres-offline-ddl.sql": {
+      "sha256": "dbd14cd5cec6b9457787c5cbe6304fd3593feb780b4560bb82893c11b76bf5d7",
+      "size": 25391
+    },
+    "docs/evidence/python-compilation.log": {
+      "sha256": "9bbcf9ba73d8d43d1c557531c2466bd3b5afeb9253e24263e26af1de724bf483",
+      "size": 55
+    },
+    "docs/evidence/readiness-after-review.log": {
+      "sha256": "7404783fd3f61ae49f4c7e4afa040b9538bf8d80def37da2882d9a6265492cc3",
+      "size": 99
+    },
+    "docs/evidence/readiness-final.log": {
+      "sha256": "05cfa4b83994ed60633ebef3297257afef7d415255523e8328f0150889e4b477",
+      "size": 99
+    },
+    "docs/evidence/sqlite-preservation.json": {
+      "sha256": "f73152c468bc78f7aa96af855b5d0abfef59b64dd25ec1315b059de3c064e673",
+      "size": 5173
+    },
+    "docs/evidence/sqlite-preservation.log": {
+      "sha256": "3c37f4a962ce2b3a2a5704af1fa8fa2ce638a7ff7e0edd0ed2e573ef2265b0fa",
+      "size": 1998
+    },
+    "docs/evidence/structural.json": {
+      "sha256": "8f1095975005a6fd314e42fa926325117cd015e156eb59957361a4873dceaaed",
+      "size": 374
+    },
+    "docs/evidence/typecheck.log": {
+      "sha256": "8ad0c3036771d14d537940eb254aeafe95860674350324d68aa4886978503809",
+      "size": 60
+    },
+    "docs/evidence-continuation/backend-147-passed.log": {
+      "sha256": "f3b22a3d7bfa7af6eba54d06dd5f114e5f51f8a4409473c88a7f641aeaa06866",
+      "size": 261
+    },
+    "docs/evidence-continuation/hub-screenshots-bridge-2-passed.log": {
+      "sha256": "381a531e028ff533bfb8862feda91b0d4b1ad7e4d86a7a4307fa2c39dac5b2b6",
+      "size": 114
+    },
+    "docs/evidence-continuation/informatics-browser-bridge-12-passed.log": {
+      "sha256": "0351e8e3f9bf6ff1e3b8a30fa52f2289d5d45c0e6abdd3eb5ea0e930a5798a9a",
+      "size": 2053
+    },
+    "docs/evidence-continuation/retained-teaching-browser-bridge-16-passed.log": {
+      "sha256": "08f27f95e4298d052d3bd0e42528185bf87f4103f30ee8d5fe8283819dd986df",
+      "size": 110
+    },
+    "docs/openapi.json": {
+      "sha256": "8de2161d17528c226b9cb92dd9f9c54aaec9112bfaf95a4813682e7812a9f95e",
+      "size": 162435
+    },
+    "docs/planning/Adolat_Olympic_Club_V2_Approved_Scope_Addendum.md": {
+      "sha256": "0d49b7a2df2d0ec0fb8fc6b062ba3e6ccaa28148a6d49c1269364b8f3e364ab3",
+      "size": 21568
+    },
+    "docs/planning/OlympiadOS_V2_Master_Blueprint.md": {
+      "sha256": "1e8ae01125b4de484e394afe1b09d8b5a400f24d8651983ce84ab314f920d77b",
+      "size": 224783
+    },
+    "docs/screenshots/README.md": {
+      "sha256": "ef952ef04ef195db4fd7a059dee36672103b9a15e1b6af6dedd674f06b91ad87",
+      "size": 276
+    },
+    "docs/screenshots/student-mobile-ru.png": {
+      "sha256": "2a14484f18e93990bdfaf4b08f61dd9b31ab28bf7c37cc0a9bcd04bffe646cbb",
+      "size": 136718
+    },
+    "docs/screenshots/student-workspace-ru.png": {
+      "sha256": "6bb4d99881ff935afda99aee390205d0b9f21a14f992c93f0989a96432534a14",
+      "size": 123488
+    },
+    "docs/screenshots/teacher-dashboard-en.png": {
+      "sha256": "bc21330a1476e35b4e4ede17740a4f1f5709c28905ad4e895e45fc650a2d4289",
+      "size": 207486
+    },
+    "docs/screenshots/teacher-dashboard-ru.png": {
+      "sha256": "8a010ab65d315176ef1cbaa118b2f565efd4f07ce20c0be535e55aaded9d06f9",
+      "size": 209230
+    },
+    "docs/screenshots-continuation/README.md": {
+      "sha256": "6c7809796fb6bd65af33e4a9af364bf6c162f4cc9fd3a2d4b733cd2f5eebea67",
+      "size": 712
+    },
+    "docs/screenshots-continuation/informatics-hub-en-dark.png": {
+      "sha256": "34e72e6324b0886c211328f10b446c968ce8a50cdd3fd43f9e782c7a68fa4581",
+      "size": 149873
+    },
+    "docs/screenshots-continuation/informatics-hub-ru-dark.png": {
+      "sha256": "623bdf704d6701a6960bec55276cd3bae33d8f076eca89ec0994fdfc6a491c42",
+      "size": 161247
+    },
+    "docs/screenshots-continuation/informatics-mobile-en-dark.png": {
+      "sha256": "8b72030acbd38e2d711a470a8081bcea354321795775feff42daee267b86549f",
+      "size": 86038
+    },
+    "docs/screenshots-continuation/informatics-mobile-ru-dark.png": {
+      "sha256": "ec786021297f04fe2901c2209f71d5380e27bb80dc6e9b3bf1774b74ea29e85f",
+      "size": 96457
+    },
+    "docs/screenshots-m1/README.md": {
+      "sha256": "154c3930e30fd5abe5eba8a32fccd9d778ecbbad6b711cb92f65ee3680feb875",
+      "size": 954
+    },
+    "docs/screenshots-m1/informatics-hub-en-dark.png": {
+      "sha256": "8a6adc5b329eb382774d43a08fca54ecb59a4208c7e2c957aaec7e44fdc6d361",
+      "size": 150566
+    },
+    "docs/screenshots-m1/informatics-hub-ru-dark.png": {
+      "sha256": "f0a01051c95dec2a477e3f35291a487506779543fcfb55de3b60328d5f0cdbdc",
+      "size": 160994
+    },
+    "docs/screenshots-m1/informatics-mobile-en-dark.png": {
+      "sha256": "4f4326eb8c52a111d4d90178017dd0af9851ccd909ed1f97333f062f28de2f10",
+      "size": 87853
+    },
+    "docs/screenshots-m1/informatics-mobile-ru-dark.png": {
+      "sha256": "9da5ba89d8890febe66aaa865f85bad6492c39270799fc6084a40c5185766cc1",
+      "size": 98709
+    },
+    "docs/screenshots-m1/leaderboard-en.png": {
+      "sha256": "f2ff456ce01563ba8fae16e5673fb314b898b59d0c3eed55c4bbd08363c42f10",
+      "size": 108348
+    },
+    "docs/screenshots-m1/leaderboard-ru.png": {
+      "sha256": "9598c07bd1e4652b9ccfa048fd146c2b89c6a4ca618eecf8a5944a5726be771b",
+      "size": 111129
+    },
+    "docs/screenshots-m1/login-en.png": {
+      "sha256": "f459006b4faf877f4369ea02ea57b94d0d7cbd454cb834e943d6d049f97c3238",
+      "size": 85905
+    },
+    "docs/screenshots-m1/my-training-en.png": {
+      "sha256": "7f2a78ef65c243b987bea795e08c1b44b41725ebbba8321c6854f54047dcaf8a",
+      "size": 156675
+    },
+    "docs/screenshots-m1/my-training-ru.png": {
+      "sha256": "eb2278ad27b68e7923af4ee28703a64a11343757e8b89ce7396860827d3b5890",
+      "size": 167896
+    },
+    "docs/storage-setup.md": {
+      "sha256": "f5f653468965e8c2e83490a466fc8bf26a12f664c1b1ed99fff8b1543f20d06e",
+      "size": 5162
+    },
+    "docs/supabase-setup.md": {
+      "sha256": "02e22f51f10c96a229101a36631755595ccb866c6b868b0f8d2f387cb8a479c5",
+      "size": 7778
+    },
+    "docs/v1-reference/ARCHITECTURE.md": {
+      "sha256": "3731b9b362511752157dc38189741e2f2286e29a24bde128ac2d40f07a399c29",
+      "size": 7487
+    },
+    "docs/v1-reference/DEPLOYMENT.md": {
+      "sha256": "c16454e002ea0e9ac50de3707e9dbe390c92ce2d01e478daec8d4d866b903298",
+      "size": 5160
+    },
+    "docs/v1-reference/README.md": {
+      "sha256": "db0ecd44bad232a290003c1b936762cb0ab2a63b3f97926f97bef6e4b9227ea4",
+      "size": 473
+    },
+    "docs/v1-reference/SECURITY.md": {
+      "sha256": "e0ba87a12d484b26a76243dbc1e4c15da6a52cf292f4540a682135c0ee065cc2",
+      "size": 6720
+    },
+    "docs/v1-reference/STATUS.md": {
+      "sha256": "811862764c3428acbf6b214d62a681515610521d5ce4d4c9bef1f410b1e18b7e",
+      "size": 8518
+    },
+    "docs/v1-reference/TEST_REPORT.md": {
+      "sha256": "ce0927b386134892123b70bea74aadcc54e94e591dd39e4245430c393c2d0a22",
+      "size": 6101
+    },
+    "docs/v1-reference/asset-checksums.json": {
+      "sha256": "71a83126f335ae4f8a5528d01363e7c8286b96ad5f1ec26bd71ca76e54ae4768",
+      "size": 1908
+    },
+    "docs/v1-reference/openapi.json": {
+      "sha256": "3cc629af88708818cb12b6cd02998e089777a8159dbf26a56763c404b2981be6",
+      "size": 94244
+    },
+    "docs/v1-reference/release-check.txt": {
+      "sha256": "b9fb36999cf91a57ae7419f6952789565c77d65b9404e1abdf027559cb61bb58",
+      "size": 121
+    },
+    "docs/v1-reference/schema.postgresql.sql": {
+      "sha256": "5eda7107bb15c30becaf1df5eeacf32fcbe1acc064eac67379a27e7fcc0bfdaf",
+      "size": 15814
+    },
+    "docs/v1-reference/test-results-api.xml": {
+      "sha256": "c9f9542ec68370c6d8a28a27eafdcf1fd7e56f76eb7c532624ce8034dbd51b66",
+      "size": 6793
+    },
+    "docs/v1-reference/test-results-browser.xml": {
+      "sha256": "366b8ca1e3401868ee660553e97526b510e1d0fb1c4c707530950549409734bd",
+      "size": 2190
+    },
+    "frontend/api.ts": {
+      "sha256": "d8162014426d3ed78598a90779f8c70d1635908471bed52dc845db758934caad",
+      "size": 1812
+    },
+    "frontend/app.ts": {
+      "sha256": "0cb1d6e296000158f67ca8b1b73d9fceeb788f119302dc1721c858457e1a75b1",
+      "size": 24291
+    },
+    "frontend/i18n.ts": {
+      "sha256": "c65288ed9c606251ebabed832cb25fe475e1c0c3f016aea25664c3a95f8bbbd1",
+      "size": 3742
+    },
+    "frontend/pages-activities.ts": {
+      "sha256": "8ba42d55c8f0b5fd029529c18071d4abcbde1bb11d45b28ddfd015c49a83cb6e",
+      "size": 23250
+    },
+    "frontend/pages-classrooms.ts": {
+      "sha256": "e413aa0d1226268d7894ab6b5a18d1787fe29304813b22b321be73e6e458985d",
+      "size": 11613
+    },
+    "frontend/pages-codeforces.ts": {
+      "sha256": "4d072e8a0e2f95f67c9ade1e67832effdf1d30e80b718d3606a2f3b8a3e41df5",
+      "size": 11896
+    },
+    "frontend/pages-groups.ts": {
+      "sha256": "6f261ef866fc2afe8621e0488c05f0d214fe32c475dd2669a0fad1bb8ce46693",
+      "size": 7386
+    },
+    "frontend/pages-home.ts": {
+      "sha256": "44ca2fd34c882b824ee300c1ad79b80a39732d18051eb94300be3655d0666ab4",
+      "size": 6399
+    },
+    "frontend/pages-library.ts": {
+      "sha256": "f090c1f0fb857e4952f64a9203eba9a466f166f98cde6b0f31af0014855dc407",
+      "size": 14975
+    },
+    "frontend/pages-operations.ts": {
+      "sha256": "e90bbd94f38a78b3d66508ce3dfdf8716a1b3a655e662c4c8fdfdf7126865e68",
+      "size": 13517
+    },
+    "frontend/pages-review.ts": {
+      "sha256": "35516f33ebafdf2cf5d6548b3cdac62ebf0d8b90a4733a8f22fbf0adc1ab5cd5",
+      "size": 7042
+    },
+    "frontend/pages-training.ts": {
+      "sha256": "703673533d3dd4c78dddcfd5cea78f5a612a20aff2aa01a715c638d7bb5f44ab",
+      "size": 27804
+    },
+    "frontend/router.ts": {
+      "sha256": "48d606c900e9b11c0b154bfd8978656fb7e65850083f3eab0a01ab93d5bad87e",
+      "size": 4195
+    },
+    "frontend/state.ts": {
+      "sha256": "744a5b3db5ba75f5dd79e46a466813e815d6a752a1acd95588caa14fed49581e",
+      "size": 1054
+    },
+    "frontend/types-training.ts": {
+      "sha256": "04637c1b9dce6b7f7138c06e07d12e77d7a99d6a8bbab3499b0351004c31c3c3",
+      "size": 3099
+    },
+    "frontend/types.ts": {
+      "sha256": "0d8df15693c8c5a44b04606fd924db9182c99f50f0d82ad9bb8a02f499e2b694",
+      "size": 8176
+    },
+    "frontend/ui.ts": {
+      "sha256": "d2ca3c262871145ea21eb29e9a290b497ae1e7adc744b8e9b1e931a4e794e94c",
+      "size": 21566
+    },
+    "frontend/work-editor.ts": {
+      "sha256": "7821ba623751f7d93185de3f5cd84fb8bc416d14fce66e1b71671d6ccadbd6d0",
+      "size": 24111
+    },
+    "locales/en.json": {
+      "sha256": "0d4690474be4126c8b9e44d9f40d16e6e8a25d16cbfb1ad17debb9af4e405ebf",
+      "size": 49046
+    },
+    "locales/ru.json": {
+      "sha256": "e22e645938897bfdd4bab950e9aff2fe85ae5134802004dc404a42338473d2c7",
+      "size": 74568
+    },
+    "migrations/env.py": {
+      "sha256": "d45f05502b702724bf80a8499ed5869cac6db2e09e11b3ef4d6a4f5a01852284",
+      "size": 2542
+    },
+    "migrations/script.py.mako": {
+      "sha256": "3289fc74837bd84078f948ef248ae0da93f21770732fb2b5a5c01395b4f5be99",
+      "size": 509
+    },
+    "migrations/versions/bb2030abeaf7_initial_relational_schema.py": {
+      "sha256": "66e871438580234f30384b06dd3119aca1ae6a1800713498b4f94faa905408de",
+      "size": 30270
+    },
+    "migrations/versions/c16a7f429444_v2_independent_training_codeforces_and_.py": {
+      "sha256": "97883c20c4ddca96a4f67bfc6d3bd47b69c44b5e51d34210db39a1525a08846f",
+      "size": 22244
+    },
+    "migrations/versions/d84f103f71aa_v2_teaching_enrollment_and_recovery.py": {
+      "sha256": "2d529d3ee8c15c964f958427870f2acb74c0fa72760a781d17ca4342a3656c99",
+      "size": 1564
+    },
+    "package-lock.json": {
+      "sha256": "0f793decb56cc3e831e7f5aacb6713600a1f61fc014fcfef50a535bf450cf042",
+      "size": 731
+    },
+    "package.json": {
+      "sha256": "d9e5c958262217f485f70c399d8222183c9e19b608b5f5f05a111c5a2b0a179d",
+      "size": 308
+    },
+    "pytest.ini": {
+      "sha256": "24039aa672bca6bf37ac84304161c07c80eb269741b63d817fa40c319ac2831f",
+      "size": 219
+    },
+    "render.yaml": {
+      "sha256": "8c8a6beb504f106ef0d76507a4e4ff0cd3c06e723685b35f58bc4b4fcf007bbf",
+      "size": 1005
+    },
+    "requirements-dev.txt": {
+      "sha256": "c0e0ad3b73c557d3926bde87f273725d672cf553bb0675f1e13f0f783eda4e1b",
+      "size": 85
+    },
+    "requirements-postgres.txt": {
+      "sha256": "b53f9cbcd17e8fa164f8a52571e8cae92f3e3c46f472aee75427c78fc038cfcd",
+      "size": 133
+    },
+    "requirements.txt": {
+      "sha256": "4feb04debeecd129070cae44670ed71c4f4678d0d551a3eb4eb93b17a97c25ad",
+      "size": 173
+    },
+    "scripts/brand-assets.py": {
+      "sha256": "e04e63ad3a6b4b270b88b556a1813dbcf63e0ab14b5f720ea0412cb14a6ee843",
+      "size": 2339
+    },
+    "scripts/browser-bundle.cjs": {
+      "sha256": "a8324b238df1d73bad6b4f9edb543ddddbdb47876e873bc81966adad1d349cce",
+      "size": 1212
+    },
+    "scripts/check.sh": {
+      "sha256": "927132f6a80a74935ac43206cc408679ce61f9787a726e4df41ead7564cb2070",
+      "size": 251
+    },
+    "scripts/container-start.sh": {
+      "sha256": "71ffdd5799718ac82330aed04eb8c031411272a1cd6cb6e54dc9ee69f28cf78d",
+      "size": 412
+    },
+    "scripts/recovery.py": {
+      "sha256": "f0384567f85eb57e483c42d579d231a0849896e3b8a51b5718504b942b19c55a",
+      "size": 11278
+    },
+    "scripts/run-local.sh": {
+      "sha256": "cc1dd2399b87da5cc848c7f9f313056f4efb6703092f49d95d47dd0884e15c28",
+      "size": 156
+    },
+    "server/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "server/app.py": {
+      "sha256": "81ab31f6cc6e922e9f1e8aa30eddf099091c8537e415f53479cc5d428fe0229f",
+      "size": 7483
+    },
+    "server/cli.py": {
+      "sha256": "bd2557662be240231653d315795e45af213dbb7c9d775960cb8fa323f1aaf1d1",
+      "size": 6712
+    },
+    "server/config.py": {
+      "sha256": "47358de8c37230b77e17dc1fa736d1ffc23ad13ea01b94fa90f542e82bd8cf48",
+      "size": 5760
+    },
+    "server/db.py": {
+      "sha256": "3ac304d636413363176d97898d95e9582f0e678de79979af74e8c63c6dcf6616",
+      "size": 2467
+    },
+    "server/errors.py": {
+      "sha256": "a02121f56830aee2ba7ed69aa589633309bb16fbd71fee4471efd435fe6e8344",
+      "size": 427
+    },
+    "server/i18n.py": {
+      "sha256": "b838d8ec6fbeef2859609b73495542661b8cda096c6b410e9e396c51b232b8cd",
+      "size": 815
+    },
+    "server/models.py": {
+      "sha256": "4878e35fa4102611826a2184f7e4b964c5bfbc869a11f2718b2f9448405f799e",
+      "size": 21001
+    },
+    "server/models_v2.py": {
+      "sha256": "87a0aa0480c18846b75e0555d2670308d4edba3360002739ef6f28707543e829",
+      "size": 15672
+    },
+    "server/routes/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "server/routes/activities.py": {
+      "sha256": "67ea7edc0efb9768ffc349b44ebd2aa198c5c44a4757b4cd00075f5101b3562b",
+      "size": 17011
+    },
+    "server/routes/auth.py": {
+      "sha256": "b2b446a336be12248799298eed289e8de756c5c545c7884ee2e78f9123c3f2d2",
+      "size": 13715
+    },
+    "server/routes/classrooms.py": {
+      "sha256": "7de9e3e1a7f00c04a38c66d6d64a7864036c793620efa3d874de36b8779e58bc",
+      "size": 9388
+    },
+    "server/routes/codeforces.py": {
+      "sha256": "f67402e3d28921d2242b48140e4d7312fc7db5030ffac9f1b353c0202c123e26",
+      "size": 8129
+    },
+    "server/routes/files.py": {
+      "sha256": "7acefa6b0889cc88da4ac12dbdb157cb42c7c454ea27bec5f540f238dfd52afe",
+      "size": 8565
+    },
+    "server/routes/groups.py": {
+      "sha256": "19948156a3a1339e9838e82feaf3652a56664e89f9be5156c1a355b2569e8680",
+      "size": 8389
+    },
+    "server/routes/library.py": {
+      "sha256": "542a2d606fd8d9b22c32d5f09168a5c57c93e6b81110243f869cb55f19a6971e",
+      "size": 6698
+    },
+    "server/routes/progress.py": {
+      "sha256": "aee5623528bfd038b212ae01e06d4ade640324fd570fc1d8366c4609848de47b",
+      "size": 8957
+    },
+    "server/routes/realtime.py": {
+      "sha256": "de97729c650e8a75dbafa09727dbe6bc451a08e2962b175cf89a96392c2e09f2",
+      "size": 4230
+    },
+    "server/routes/training.py": {
+      "sha256": "34d605e65e7cff3847f53f8e6f3f3ebf97512105728325ca01236b32d23d442c",
+      "size": 25208
+    },
+    "server/routes/work.py": {
+      "sha256": "a3477caf408a5d3919309ef85b4b1eae8e4c295b6a4087189ed1ac0117784365",
+      "size": 12515
+    },
+    "server/schemas.py": {
+      "sha256": "3bbde8b755b9bb4380478a721d02cb06e77e0c31f7eb8c5c5cfc29603326cc65",
+      "size": 8744
+    },
+    "server/schemas_training.py": {
+      "sha256": "3fdbadc4e0c245d77e0ab2703b8ba518d894f4c76f42a5fd4794630e4f003e8d",
+      "size": 6734
+    },
+    "server/security.py": {
+      "sha256": "4e0238368d9753b64ac340909967b3c77c2ecd8dc5d28629fba1b36d8ae4cd3a",
+      "size": 3716
+    },
+    "server/seed.py": {
+      "sha256": "5e5809dc4ae885e4d747c97321f39ceec679b01190c0001f5a36f3904cc8a2bc",
+      "size": 18013
+    },
+    "server/services/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "server/services/access.py": {
+      "sha256": "71c796d8e2bbbf903beba45e30ee08322f44eb24e7957a3cdd7fe37c312b3db4",
+      "size": 7928
+    },
+    "server/services/codeforces.py": {
+      "sha256": "b051d3eca8779c2a4127d215ce206d14bd281b9101edb4761997daa07fb9c1bb",
+      "size": 12724
+    },
+    "server/services/event_feed.py": {
+      "sha256": "146900941980abd0eea932f08ac8ae21ef06bd67bb8d1757db7a768934538901",
+      "size": 2026
+    },
+    "server/services/events.py": {
+      "sha256": "4d119e5436f906639720bb5cbdf46c3d81722418a15e29b3993bb03085ef6e99",
+      "size": 1103
+    },
+    "server/services/leases.py": {
+      "sha256": "6ff7688ba61359c747e73aece1d0cbf93cdb3a6b4df23d9913129762029388b7",
+      "size": 1429
+    },
+    "server/services/pagination.py": {
+      "sha256": "461e4e1107f2a0d2e4a7fec1ba068efb4ff6468b4b16e7dfb185193eebe8ab66",
+      "size": 823
+    },
+    "server/services/readiness.py": {
+      "sha256": "36c5ae0faede1ec3705ca979636e51fdc223fa412da32dc10f3c594f15f4959e",
+      "size": 2642
+    },
+    "server/services/resources.py": {
+      "sha256": "b2ca89ffac7906a03eb74891763312901954272239499c1df416ade01d92f13b",
+      "size": 596
+    },
+    "server/services/serialize.py": {
+      "sha256": "3ec7ae3f5888a1d3dbe281a83d1dfad329215b9dbd37a66d872b8c71fc56fb50",
+      "size": 4579
+    },
+    "server/services/storage.py": {
+      "sha256": "f9354f4e34cdd185c3ab4e43060ae4d266bb13a603f47bb999a414150f3b2637",
+      "size": 7635
+    },
+    "server/services/training.py": {
+      "sha256": "74bf4aefb2870d7180196154730cb025b8343259744d7a23c6c0e92216bafbfa",
+      "size": 8663
+    },
+    "server/services/uploads.py": {
+      "sha256": "263fda5b9ba01cba4fb530176765ad47656f9a36177a7240c6a8684fa23262ac",
+      "size": 11538
+    },
+    "static/assets/api.js": {
+      "sha256": "1fb09e6f7480b95ee3044f558f0edfd6cb0b1ccb099125567b9a3997d5c83643",
+      "size": 1659
+    },
+    "static/assets/api.js.map": {
+      "sha256": "d34f807f3379ae1ca51a3aa7649867ad9509e97f0d2ae44fd13dd2078a342fab",
+      "size": 1951
+    },
+    "static/assets/app.js": {
+      "sha256": "d07586b66f998dcdc159c01671026a6ca1191f7ca58aa067e3931c6ea31f5bc0",
+      "size": 24556
+    },
+    "static/assets/app.js.map": {
+      "sha256": "d94440a99b8a317a28b3d7c1424dbb53793524fb9567c019dce2e9c8614961ff",
+      "size": 25556
+    },
+    "static/assets/i18n.js": {
+      "sha256": "7072d4e5146cf653cfcb45e88cf3517e2b80167aef7d17e1f2570899c8f032d0",
+      "size": 3255
+    },
+    "static/assets/i18n.js.map": {
+      "sha256": "03ca9e0a890b911d3e9b9dec977310018600a2d32133e0f90fd4c2699902914c",
+      "size": 4426
+    },
+    "static/assets/pages-activities.js": {
+      "sha256": "bf35d1ba0794a16cb23d1b5e5be25f14cbfef8b5e1a57e5a1a6bfbcef745945b",
+      "size": 23506
+    },
+    "static/assets/pages-activities.js.map": {
+      "sha256": "ff9098fb50fa66fef9fb54e0a92c7effc115b386c73eb699d8038f7d8352f103",
+      "size": 26098
+    },
+    "static/assets/pages-classrooms.js": {
+      "sha256": "0ce7c15461a386222d4d4f24b585146799e79e46ee46159216e88f922ac40a68",
+      "size": 11363
+    },
+    "static/assets/pages-classrooms.js.map": {
+      "sha256": "230455c4f09800af24ea98efbcd6c7e8534450ae07b0efbf9d97d7df6c6afd66",
+      "size": 13465
+    },
+    "static/assets/pages-codeforces.js": {
+      "sha256": "896be332564266c9a67905a8f5aeb0a0ae724b7872a2d383df3b2fdfc783abdb",
+      "size": 12538
+    },
+    "static/assets/pages-codeforces.js.map": {
+      "sha256": "be8c64c948686571ce73e4883d2a35be9b5d5307b04e69dde51ebb732a4f4d74",
+      "size": 13591
+    },
+    "static/assets/pages-groups.js": {
+      "sha256": "9af02d82a9236a14e10ad63220957b35f13448cc70f359e052ed1b38da30df72",
+      "size": 7161
+    },
+    "static/assets/pages-groups.js.map": {
+      "sha256": "5f9792181451f21f09c1ff5532557335db28ef21b3e1c723c7287bf75b8bb85a",
+      "size": 8774
+    },
+    "static/assets/pages-home.js": {
+      "sha256": "f1c83fbf20a9a5aff543a71f28fb7da3d5ccb2ec80d23bd6fa854c9042a713a9",
+      "size": 6358
+    },
+    "static/assets/pages-home.js.map": {
+      "sha256": "34a52d76bec6b5ad03f150ce1f72223cbb44a49d21aa326964eaa91b272b8668",
+      "size": 6896
+    },
+    "static/assets/pages-library.js": {
+      "sha256": "1ff70fdf279d2d437e8b19494ed66fcdf9db037d5f24351a90e5762d9b7ac368",
+      "size": 14931
+    },
+    "static/assets/pages-library.js.map": {
+      "sha256": "68bd0381c270142c85c1c6c4c4db35b43ae7590c6bfb9cc975cb86deb4407352",
+      "size": 18398
+    },
+    "static/assets/pages-operations.js": {
+      "sha256": "20c2cda80849e9dc797572a2ef4998c138f635f96c32bddc98afd560d57b4066",
+      "size": 13280
+    },
+    "static/assets/pages-operations.js.map": {
+      "sha256": "eeffb8eae87046158c28de975523eb88f863dbd425e02db63f4249287c819d01",
+      "size": 15426
+    },
+    "static/assets/pages-review.js": {
+      "sha256": "3916960f53924a2b19d9280696364def1ed4316b7c514154ac334c54e8a0e3e1",
+      "size": 7060
+    },
+    "static/assets/pages-review.js.map": {
+      "sha256": "c358465fcac04d1cdebb117cfb70fab17bd06e8c73874ac7d5bb20e6ca85aae7",
+      "size": 8765
+    },
+    "static/assets/pages-training.js": {
+      "sha256": "514c2245d0b02328de770760ab11dd266f4115191549e4ca47f22cadbb1a39cd",
+      "size": 28410
+    },
+    "static/assets/pages-training.js.map": {
+      "sha256": "29017a9d157429fc1ec4ff0abc7c9f5a8b4de460c9ad1f53d67744aaa79dd4cf",
+      "size": 34262
+    },
+    "static/assets/router.js": {
+      "sha256": "93b94292086df2b31ad8f7a145450ab44bb40649c10cb7e110700f2e9455c672",
+      "size": 3588
+    },
+    "static/assets/router.js.map": {
+      "sha256": "3f33e36bef3d59b4e578b5d4c462bd7ddf6028eaee3bfbf3ff3dec4357510313",
+      "size": 4106
+    },
+    "static/assets/state.js": {
+      "sha256": "10781f270f6a93dacefdfc01bd6f15c91734e48388044338935e9847d5fecab8",
+      "size": 657
+    },
+    "static/assets/state.js.map": {
+      "sha256": "be207e99313e4cfbd2c6ff3d7daef3249dca4e3f8271f43c1e8d048d80ecccb4",
+      "size": 905
+    },
+    "static/assets/types-training.js": {
+      "sha256": "cb3d8a5b6d934127711b72903ebe06200d4a860fae20e5a986668101cf0b6ffc",
+      "size": 53
+    },
+    "static/assets/types-training.js.map": {
+      "sha256": "8b82fd5056609570c73497a8a2c8a77587b6b2b09a32e4af25d27cb7e1f1d87a",
+      "size": 128
+    },
+    "static/assets/types.js": {
+      "sha256": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2",
+      "size": 44
+    },
+    "static/assets/types.js.map": {
+      "sha256": "90225343f6338902a1bdf6ff2a289aabbbcd9f982c88c17f2371ec004fb8d1b1",
+      "size": 110
+    },
+    "static/assets/ui.js": {
+      "sha256": "42c7b67a39ddf22f49c1b6a9f702f1a50167a0bc9d9ebe8272b3515ac6ccf58b",
+      "size": 20592
+    },
+    "static/assets/ui.js.map": {
+      "sha256": "acfb9773cef5d32a5f6ada58403a6081890b39bf9b93f4c19cbbdd0ee24d16d1",
+      "size": 19622
+    },
+    "static/assets/work-editor.js": {
+      "sha256": "f7b29140bdfb712c7f549ca52c4a1243c68223eeb5cd1736fec2d44e5ee15a51",
+      "size": 22637
+    },
+    "static/assets/work-editor.js.map": {
+      "sha256": "bf8f42ac2f43d9c290d37ff44a0a00e0fb750a168a4df1897b8bdce9fdd64f78",
+      "size": 23510
+    },
+    "static/brand/favicon.ico": {
+      "sha256": "feaa226579230552957466af6b027e344a5afec1f79f41d7cd13dd60b61fdd48",
+      "size": 5201
+    },
+    "static/brand/icon-16.png": {
+      "sha256": "2650168548f7404f307c49dac91d7bdb9987b1398a746363fd1b8c26ca3168f5",
+      "size": 570
+    },
+    "static/brand/icon-180.png": {
+      "sha256": "ebd98158544189b0c755e055af68b7513bbcce60ba92523740fe4ac358c0e918",
+      "size": 25556
+    },
+    "static/brand/icon-192.png": {
+      "sha256": "44cabef58876a16630dde7ba82d36aff4d63980a8b52020dcfc860377199b9e5",
+      "size": 24879
+    },
+    "static/brand/icon-32.png": {
+      "sha256": "76b1a6b21d8c12b5525584976d8ed2e4350cff0f8f19b372b5e801ed2fe75803",
+      "size": 1554
+    },
+    "static/brand/icon-48.png": {
+      "sha256": "3a2e7a3b402c64a4811af0d0e87a5217ac54e09a6bcca0d0f3e7c688fde7b8d6",
+      "size": 2917
+    },
+    "static/brand/icon-512.png": {
+      "sha256": "be818bfdc82936f20fedccb2d10e0ccc46579580005a74cfee7a830bca7f3d45",
+      "size": 27908
+    },
+    "static/brand/logo-header-2x.png": {
+      "sha256": "4f38cc19555511608e0bbc7a0cb658cb50685ebca0675b2ac7406730e1af0aa9",
+      "size": 14137
+    },
+    "static/brand/logo-header.png": {
+      "sha256": "023576428df1269f251ab7f25e89fe19d857a300fdd5485c3bff55ec4f29f845",
+      "size": 4505
+    },
+    "static/brand/logo-login.png": {
+      "sha256": "f8d0c0b91d3360184352c7d37780da6f25a0e5976a2a29cdd90ca8f497aedab6",
+      "size": 24585
+    },
+    "static/brand/manifest.json": {
+      "sha256": "bc15305ea2eb4f74e05f437c69315f592d2d298d493af38c78f93e9f645f338f",
+      "size": 1988
+    },
+    "static/brand/school-logo-original.png": {
+      "sha256": "e5753fcd2e51d15a605faa299d5b7ed3d96f4260f0f162e656ae8ac2946b664e",
+      "size": 27740
+    },
+    "static/favicon.svg": {
+      "sha256": "2c4f08a0775dc415cc9941d19e2c644f681054f59edae33eaf4034475f663a7c",
+      "size": 247
+    },
+    "static/index.html": {
+      "sha256": "5f5306c8e51e49589b4c3d70d19a9e0c8670abce3190029ccddef81e54227864",
+      "size": 1627
+    },
+    "static/manifest.webmanifest": {
+      "sha256": "bf5009aebd3ab11d10e0b09f931b6ed1362adf3d957f3f89593dca8e6b9bdc14",
+      "size": 455
+    },
+    "static/math-config.js": {
+      "sha256": "e336ffa1b24a53f5f01d7d8ac9eb3fb306977ebf5f4d9e994dd2243807cc88b9",
+      "size": 525
+    },
+    "static/styles.css": {
+      "sha256": "5e8d137cb68ededd3326546eb9225049eff567df949ae801d2e9fa09ad734489",
+      "size": 61168
+    },
+    "static/vendor/MathJax-LICENSE": {
+      "sha256": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+      "size": 11358
+    },
+    "static/vendor/Prism-LICENSE": {
+      "sha256": "2b947f0901a7ffcf08a89957da9783c0e9c6e72cb6ce8e959f501ab5409e4d2b",
+      "size": 1066
+    },
+    "static/vendor/mathjax-tex-svg.js": {
+      "sha256": "0383da4c22a61555f3d99877f939f00012d2583381177302987ab04760cdadf3",
+      "size": 2108580
+    },
+    "static/vendor/prism.js": {
+      "sha256": "20e174a6b389a946b7f61ed5a6d945cd06305af35ced9dcc10727a105ee995c1",
+      "size": 64842
+    },
+    "supabase/apply_policies.sql": {
+      "sha256": "470c8948ef5493ea5e4fe36d3795eb158f703d1262bb220201ff1bc202ba131e",
+      "size": 2789
+    },
+    "supabase/bootstrap.sql": {
+      "sha256": "0acb0a5ebc8484e6b77eff870f7d72a3ec1f69d2b36bf55a9c46176ea0dbc558",
+      "size": 2443
+    },
+    "tests/__init__.py": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "size": 0
+    },
+    "tests/browser_harness.py": {
+      "sha256": "0d8ca720299af519eccd21a2a2293f9f535dd0e644fa5d0960d87ecfcc09d4f4",
+      "size": 9115
+    },
+    "tests/conftest.py": {
+      "sha256": "25da7d72c050c185e4e83e24b747aa09d9a7a757a1c7362efea410903b9181b4",
+      "size": 6815
+    },
+    "tests/test_browser.py": {
+      "sha256": "b666ea4902806a7d4852aed1c0f8b923783c7e32cab348d263e6c338511b6c6b",
+      "size": 12689
+    },
+    "tests/test_i18n_and_schema.py": {
+      "sha256": "ba50e412d61715626577fcaf635434f176d27df590abf835488cdb6df4aa65e8",
+      "size": 2405
+    },
+    "tests/test_realtime.py": {
+      "sha256": "06bfd5afc7c604f081978e967fea4fd185824f600812c8766383d1adeac2f1fd",
+      "size": 3617
+    },
+    "tests/test_security.py": {
+      "sha256": "81df10175c123f1e9e211bf684305e3a5e58782b8cee3c4a99cd1522adf31e6b",
+      "size": 11094
+    },
+    "tests/test_v2_browser.py": {
+      "sha256": "b8ca2e5ea742cc74f65cce010bdf969feec67dc1b5793e8785f8262604a8392d",
+      "size": 10254
+    },
+    "tests/test_v2_codeforces.py": {
+      "sha256": "345e7d8126dbded457260f64c8d3646977486c06a8a1b653a7a72fa5d9eb1eb1",
+      "size": 14771
+    },
+    "tests/test_v2_continuation.py": {
+      "sha256": "84bee3e6a75a7088f363038ad0de7a6d17755b3413f5708d8781714ed6e6e5d1",
+      "size": 9225
+    },
+    "tests/test_v2_protective.py": {
+      "sha256": "8bf1c9e79eb339c29056af839555189e20179acc917dcda48d4594473bd3d775",
+      "size": 4791
+    },
+    "tests/test_v2_readiness.py": {
+      "sha256": "c2b34c5dcadf7c96e73074c9cf7f5a371373b29884dad26cbc076f0031f45760",
+      "size": 3982
+    },
+    "tests/test_v2_recovery.py": {
+      "sha256": "e4ea3816b97f9eae9e0c307a7f5b37dda9ee4a8f2eae30b239a2e5d880bf7190",
+      "size": 2867
+    },
+    "tests/test_v2_storage.py": {
+      "sha256": "cade05504fb36870d509d8f769ee0ce1462abd31a23c5864cc5cdc2bb833e0be",
+      "size": 10070
+    },
+    "tests/test_v2_training.py": {
+      "sha256": "1bba7757549090294cca8c7ee1d50e45e8f16d7b03c97c436c5e6d2fe5bd24af",
+      "size": 13451
+    },
+    "tests/test_workflows.py": {
+      "sha256": "64de6f85349404bf55d647d609ff72ae3c9b90e28dbd4d2f38c9ed20f1268ada",
+      "size": 12083
+    },
+    "tsconfig.json": {
+      "sha256": "90d8f99ff89f3deff83d53337aa628c9409725631dae0744025237dce6ccc4ee",
+      "size": 444
+    }
+  }
+}

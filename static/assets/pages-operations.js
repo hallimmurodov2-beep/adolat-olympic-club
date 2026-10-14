@@ -1,0 +1,78 @@
+import { api } from './api.js';
+import { applyLocale, date, number, plain, t } from './i18n.js';
+import { isStaff, serverNow, state } from './state.js';
+import { navigate, refresh, routeURL, setView } from './router.js';
+import { activityRow, biValue, bilingual, bindForm, button, confirmAction, content, empty, field, formActions, formValue, h, icon, linkButton, onAction, panel, selectField, submissionRow, titleBlock, toast } from './ui.js';
+export async function progressPage() {
+    const rooms = await api('/classrooms');
+    const cid = routeURL().searchParams.get('classroom') ?? '';
+    const p = await api('/progress' + (cid ? '?classroom_id=' + cid : ''));
+    const stat = (value, label) => `<div class="stat-card"><span>${h(t(label))}</span><strong>${h(number(value))}</strong></div>`;
+    const topics = p.topics.map(row => { const percent = row.possible ? 100 * row.score / row.possible : 0; return `<div class="topic-progress"><div class="row-between"><strong>${content(row.name)}</strong><span>${row.reviewed ? h(number(row.score)) + ' / ' + h(number(row.possible)) : h(t('progress.no_reviews'))}</span></div><meter min="0" max="100" value="${percent}" aria-label="${h(plain(row.name))}">${number(percent)}%</meter><small>${h(t('common.attempted'))}: ${h(number(row.attempted))} · ${h(t('common.reviewed'))}: ${h(number(row.reviewed))}</small></div>`; }).join('');
+    const timeline = p.timeline.length ? `<div class="bar-chart" role="img" aria-label="${h(t('progress.timeline'))}">${p.timeline.map(day => `<div class="bar-column"><span>${h(number(day.attempted))}</span><div class="bar" style="height:${Math.max(3, 120 * day.attempted / Math.max(1, ...p.timeline.map(d => d.attempted)))}px"></div><small>${h(new Intl.DateTimeFormat(state.locale, { day: 'numeric', month: 'short', timeZone: 'UTC' }).format(Date.parse(day.date)))}</small></div>`).join('')}</div>` : '';
+    setView(titleBlock(t('nav.progress'), t('progress.description')) + `<form id="progress-filter" class="filter-bar">${selectField(t('common.classroom'), 'classroom', [{ value: '', label: t('common.all') }, ...rooms.map(c => ({ value: c.id, label: plain(c.name) }))], cid)}${formActions(t('action.filter'))}</form><div class="stats-grid">${stat(p.attempted, 'common.attempted')}${stat(p.reviewed, 'common.reviewed')}${stat(p.completed, 'common.completed')}${stat(p.attempts, 'common.attempts')}</div><p class="field-help">${h(t('progress.method'))}</p>${!p.attempted ? empty(t('progress.empty'), t('progress.empty_note')) : ''}<div class="dashboard-grid"><div>${panel(t('progress.topics'), topics || `<p class="panel-empty">${h(t('progress.empty_note'))}</p>`)}${panel(t('progress.timeline'), timeline || `<p class="panel-empty">${h(t('common.none'))}</p>`)}</div><div>${panel(t('dashboard.feedback'), p.feedback.length ? p.feedback.map(s => submissionRow(s, isStaff())).join('') : `<p class="panel-empty">${h(t('grade.no_feedback'))}</p>`)}${panel(t('progress.competitions'), p.competition_history.length ? p.competition_history.map(activityRow).join('') : `<p class="panel-empty">${h(t('common.none'))}</p>`)}</div></div>${isStaff() ? panel(t('progress.participation'), `<div class="table-wrap"><table><thead><tr>${['auth.name', 'progress.assigned', 'common.attempted', 'common.reviewed', 'common.completed', 'progress.performance'].map(k => `<th>${h(t(k))}</th>`).join('')}</tr></thead><tbody>${p.students.map(s => `<tr><td>${h(s.name)}</td><td>${number(s.assigned)}</td><td>${number(s.attempted)}</td><td>${number(s.reviewed)}</td><td>${number(s.completed)}</td><td>${number(s.score)} / ${number(s.possible)}</td></tr>`).join('')}</tbody></table></div>`) + panel(t('progress.difficulty'), p.difficulty.map(d => `<a class="list-row" href="#/activities/${d.activity_id}"><strong>${content(d.title)}</strong><span class="row-meta">${h(number(d.score))} / ${h(number(d.possible))} · ${h(t('common.reviewed'))}: ${h(number(d.reviewed))}</span></a>`).join('') || `<p class="panel-empty">${h(t('progress.no_reviews'))}</p>`) : ''}`);
+    bindForm('progress-filter', form => navigate('/progress' + (formValue(form, 'classroom') ? '?classroom=' + formValue(form, 'classroom') : ''), true));
+}
+export async function notificationsPage() { const notices = await api('/notifications'); setView(titleBlock(t('nav.notifications'), t('notifications.description'), notices.some(n => !n.read) ? button(t('notifications.mark_read'), 'read', 'check') : '') + panel(t('nav.notifications'), notices.length ? notices.map(n => `<a class="list-row ${n.read ? '' : 'unread'}" href="#${h(n.link)}"><span class="row-icon">${icon('bell')}</span><div class="row-content"><strong>${h(t('notification.' + n.kind))}</strong><span>${content(n.title)}</span></div><small>${h(date(n.created_at))}</small></a>`).join('') : empty(t('notifications.empty'), t('notifications.empty_note')))); onAction('read', async () => { await api('/notifications/read', 'POST', {}); await refresh(); }); }
+export async function invitationsPage() {
+    const invites = await api('/invitations');
+    setView(titleBlock(t('admin.invitations'), t('admin.invite_note'), linkButton(t('admin.invite'), '/invitations/new', 'plus')) + panel(t('admin.invitations'), invites.length ? `<div class="table-wrap"><table><thead><tr><th>${h(t('auth.email'))}</th><th>${h(t('common.role'))}</th><th>${h(t('admin.expires'))}</th><th>${h(t('common.status'))}</th><th></th></tr></thead><tbody>${invites.map(i => `<tr><td>${h(i.email)}</td><td>${h(t('role.' + i.role))}</td><td>${h(date(i.expires_at))}</td><td>${h(t(i.accepted_at ? 'admin.accepted' : i.expires_at < serverNow() ? 'admin.expired' : 'admin.pending'))}</td><td>${!i.accepted_at && i.expires_at > serverNow() ? button(t('admin.revoke'), 'revoke', 'trash', 'danger small', `data-id="${i.id}" data-kind="${h(i.kind ?? 'registration')}"`) : ''}</td></tr>`).join('')}</tbody></table></div>` : empty(t('admin.no_invitations'), t('admin.invite_note'))));
+    onAction('revoke', async (el) => {
+        if (await confirmAction(t('admin.revoke_confirm'))) {
+            await api((el.dataset.kind === 'existing_account' ? '/enrollment-invitations/' : '/invitations/') + el.dataset.id, 'DELETE');
+            await refresh();
+        }
+    });
+}
+export async function invitationForm() {
+    const rooms = await api('/classrooms');
+    setView(titleBlock(t('admin.invite'), t('admin.invite_note')) + `<form id="invite-form" class="form-panel">${field(t('auth.email'), 'email', '', 'email', 'required maxlength="254"')}${selectField(t('common.role'), 'role', state.user?.role === 'admin' ? [{ value: 'student', label: t('role.student') }, { value: 'teacher', label: t('role.teacher') }] : [{ value: 'student', label: t('role.student') }])}${selectField(t('common.classroom'), 'classroom_id', [{ value: '', label: t('common.none') }, ...rooms.map(r => ({ value: r.id, label: plain(r.name) }))], routeURL().searchParams.get('classroom') ?? '')}${formActions(t('admin.invite'), '/invitations')}</form><div id="invitation-result"></div>`);
+    bindForm('invite-form', async (form) => {
+        const result = await api('/invitations', 'POST', { email: formValue(form, 'email'), role: formValue(form, 'role'), classroom_id: formValue(form, 'classroom_id') || null });
+        document.getElementById('invitation-result').innerHTML = panel(t('admin.invite_link'), `<div class="panel-body"><p>${h(t('admin.invite_note'))}</p><label class="field"><span>${h(t('admin.invite_link'))}</span><input type="text" readonly id="private-invite-link" value="${h(result.link)}"></label>${button(t('action.copy'), 'copy-link', 'copy')}<p class="muted">${h(t('admin.expires'))}: ${h(date(result.expires_at))}</p></div>`);
+        onAction('copy-link', async () => {
+            const el = document.getElementById('private-invite-link');
+            el.select();
+            try {
+                await navigator.clipboard.writeText(el.value);
+                toast(t('app.copied'));
+            }
+            catch {
+                el.focus();
+            }
+        });
+        form.reset();
+    });
+}
+export async function adminPage() {
+    const [users, audits] = await Promise.all([api('/admin/users'), api('/admin/audit')]);
+    setView(titleBlock(t('nav.admin'), t('admin.description'), linkButton(t('admin.invitations'), '/invitations', 'user', 'secondary') + linkButton(t('admin.invite'), '/invitations/new', 'plus')) + panel(t('admin.users'), `<div class="table-wrap"><table><thead><tr>${['auth.name', 'auth.email', 'common.role', 'common.status'].map(k => `<th>${h(t(k))}</th>`).join('')}<th></th></tr></thead><tbody>${users.map(u => `<tr><td>${h(u.display_name)}</td><td>${h(u.email)}</td><td>${h(t('role.' + u.role))}</td><td><span class="badge">${h(t(u.active ? 'common.active' : 'common.inactive'))}</span></td><td>${u.id !== state.user?.id ? button(t(u.active ? 'admin.disable' : 'admin.enable'), 'user-status', u.active ? 'lock' : 'check', 'secondary small', `data-id="${u.id}" data-active="${u.active}"`) : ''}</td></tr>`).join('')}</tbody></table></div>`) + `<form id="settings-form" class="form-panel wide"><h2>${h(t('admin.settings'))}</h2>${bilingual('name', t('admin.club_name'), state.settings.name, true)}${field(t('admin.timezone'), 'timezone', state.settings.timezone, 'text', 'required maxlength="60"')}${formActions(t('action.save'))}</form>` + panel(t('admin.audit'), audits.length ? audits.map(a => `<div class="list-row"><div class="row-content"><strong>${h(t('audit.' + a.action))}</strong><small>${h(a.actor_name)} · ${h(date(a.created_at))}</small></div><code>${h(a.entity_id.slice(0, 8))}</code></div>`).join('') : `<p class="panel-empty">${h(t('admin.no_audit'))}</p>`));
+    onAction('user-status', async (el) => {
+        if (!await confirmAction(t('admin.status_confirm')))
+            return;
+        await api('/admin/users/' + el.dataset.id, 'PATCH', { active: el.dataset.active !== 'true' });
+        await refresh();
+    });
+    bindForm('settings-form', async (form) => { state.settings = await api('/settings', 'PUT', { name: biValue(form, 'name'), timezone: formValue(form, 'timezone') }); toast(t('app.saved')); await refresh(); });
+}
+export async function profilePage() {
+    const user = state.user;
+    setView(titleBlock(t('nav.profile'), t('profile.description'), state.canTrain ? linkButton(t('cf.account'), '/informatics/account', 'code') : '') + `<div class="dashboard-grid"><div><form id="profile-form" class="form-panel"><h2>${h(user.display_name)}</h2><p class="muted">${h(user.email)} · ${h(t('role.' + user.role))}</p>${field(t('auth.name'), 'display_name', user.display_name, 'text', 'required minlength="2" maxlength="100"')}${selectField(t('language.label'), 'locale', [{ value: 'ru', label: 'Русский' }, { value: 'en', label: 'English' }], state.locale)}<p class="field-help">${h(t('profile.locale_note'))}</p><p class="field-help">${h(t('profile.role_note'))}</p>${formActions(t('action.save'))}</form>${panel(t('profile.theme'), `<div class="panel-body">${button(t(state.theme === 'dark' ? 'profile.light' : 'profile.dark'), 'profile-theme', state.theme === 'dark' ? 'sun' : 'moon')}</div>`)}</div><form id="password-form" class="form-panel"><h2>${h(t('profile.password'))}</h2><p class="field-help">${h(t('profile.password_note'))}</p>${field(t('profile.current_password'), 'current_password', '', 'password', 'required autocomplete="current-password"')}${field(t('profile.new_password'), 'new_password', '', 'password', 'required minlength="12" maxlength="256" autocomplete="new-password"', t('auth.password_help'))}${formActions(t('profile.password'))}</form></div>`);
+    bindForm('profile-form', async (form) => { state.user = await api('/profile', 'PATCH', { display_name: formValue(form, 'display_name'), locale: formValue(form, 'locale') }); applyLocale(state.user.locale); document.dispatchEvent(new Event('shell-update')); toast(t('app.saved')); await refresh(); });
+    bindForm('password-form', async (form) => {
+        const result = await api('/auth/password', 'POST', { current_password: formValue(form, 'current_password'), new_password: formValue(form, 'new_password') });
+        state.csrf = result.csrf;
+        document.dispatchEvent(new Event('session-rotated'));
+        form.reset();
+        toast(t('profile.password_changed'));
+    });
+    onAction('profile-theme', () => { document.dispatchEvent(new Event('toggle-theme')); void refresh(); });
+}
+/** Explicitly accepted, account-bound classroom enrollment (never silent addition). */
+export async function enrollmentPage(token) {
+    const preview = await api('/auth/enrollment-preview', 'POST', { token });
+    setView(titleBlock(t('enrollment.title'), t('enrollment.explanation')) +
+        `<section class="panel enrollment-confirm"><div class="panel-body"><h2>${content(preview.classroom_name)}</h2><p>${h(t('enrollment.consent'))}</p><p class="muted">${h(t('admin.expires'))}: ${h(date(preview.expires_at))}</p><form id="enrollment-accept">${formActions(t('enrollment.join'), '/classrooms')}</form></div></section>`);
+    bindForm('enrollment-accept', async () => { const result = await api('/auth/enroll', 'POST', { token }); toast(t('enrollment.success')); await navigate('/classrooms/' + result.classroom_id, true); });
+}
+//# sourceMappingURL=pages-operations.js.map

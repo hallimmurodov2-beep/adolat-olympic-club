@@ -1,0 +1,17 @@
+{
+  "command": [
+    "/opt/pyvenv/bin/python",
+    "-m",
+    "pytest",
+    "-q",
+    "--ignore=tests/test_browser.py",
+    "--ignore=tests/test_v2_browser.py",
+    "--junitxml=/mnt/data/adolat_v2_work/final-evidence/backend.xml"
+  ],
+  "exit_code": 0,
+  "elapsed_seconds": 41.42,
+  "environment": {
+    "database": "isolated SQLite",
+    "browser": null
+  }
+}

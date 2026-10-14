@@ -1,0 +1,8 @@
+Adolat Olympic Club 2.0.0-m1.1
+Early Informatics development checkpoint — not full V2 release acceptance.
+Built by evolving the preserved OlympiadOS V1 source.
+Backend tests: 139 passed (isolated SQLite, mocked external providers).
+Browser tests: 25 passed (supplementary browser-bridge mode only).
+Native browser: environment-blocked. PostgreSQL/cloud/real pilot: unverified.
+See docs/TEST_REPORT.md and docs/IMPLEMENTATION_STATUS.md.
+No deployment, student data, credentials, or font files are bundled.

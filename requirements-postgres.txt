@@ -1,0 +1,3 @@
+-r requirements.txt
+# Pinned release verified in the publisher package registry; hosted tests remain a gate.
+psycopg[binary]==3.2.13

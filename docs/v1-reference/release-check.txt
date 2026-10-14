@@ -1,0 +1,1 @@
+Clean-archive migration, idempotent initialization, random demo seed, login in RU/EN, dashboard, and static assets: PASS

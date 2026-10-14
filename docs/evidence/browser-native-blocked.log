@@ -1,0 +1,71 @@
+F
+=================================== FAILURES ===================================
+___________ test_teacher_student_assignment_grading_and_autosave[ru] ___________
+
+tabs = <function tabs.<locals>.create at 0x7f045b4e4220>
+env = <tests.conftest.Harness object at 0x7f045ba31d30>, locale = 'ru'
+
+    @pytest.mark.parametrize('locale',['ru','en'])
+    def test_teacher_student_assignment_grading_and_autosave(tabs,env,locale):
+>       teacher=tabs('teacher',locale);student=tabs('student',locale)
+                ^^^^^^^^^^^^^^^^^^^^^^
+
+tests/test_browser.py:55: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+tests/test_browser.py:40: in create
+    tab=BrowserTab(chromium,live,viewport);opened.append(tab)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+tests/browser_harness.py:49: in __init__
+    self.page.goto(url);return
+    ^^^^^^^^^^^^^^^^^^^
+/opt/pyvenv/lib/python3.13/site-packages/playwright/sync_api/_generated.py:9050: in goto
+    self._sync(
+/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_page.py:552: in goto
+    return await self._main_frame.goto(**locals_to_params(locals()))
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_frame.py:153: in goto
+    await self._channel.send(
+/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_connection.py:69: in send
+    return await self._connection.wrap_api_call(
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ 
+
+self = <playwright._impl._connection.Connection object at 0x7f045befdfd0>
+cb = <function Channel.send.<locals>.<lambda> at 0x7f045b4e44a0>
+is_internal = False, title = None
+
+    async def wrap_api_call(
+        self, cb: Callable[[], Any], is_internal: bool = False, title: str = None
+    ) -> Any:
+        if self._api_zone.get():
+            return await cb()
+        task = asyncio.current_task(self._loop)
+        st: List[inspect.FrameInfo] = getattr(
+            task, "__pw_stack__", None
+        ) or inspect.stack(0)
+    
+        parsed_st = _extract_stack_trace_information_from_stack(st, is_internal, title)
+        self._api_zone.set(parsed_st)
+        try:
+            return await cb()
+        except Exception as error:
+>           raise rewrite_error(error, f"{parsed_st['apiName']}: {error}") from None
+E           playwright._impl._errors.Error: Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:59585/
+E           Call log:
+E             - navigating to "http://127.0.0.1:59585/", waiting until "load"
+
+/opt/pyvenv/lib/python3.13/site-packages/playwright/_impl/_connection.py:559: Error
+---------------------------- Captured stderr setup -----------------------------
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> bb2030abeaf7, Initial relational schema
+Revision ID: bb2030abeaf7
+Revises:
+INFO  [alembic.runtime.migration] Running upgrade bb2030abeaf7 -> c16a7f429444, V2 independent training Codeforces and durable storage foundation
+Revision ID: c16a7f429444
+Revises: bb2030abeaf7
+=========================== short test summary info ============================
+FAILED tests/test_browser.py::test_teacher_student_assignment_grading_and_autosave[ru] - playwright._impl._errors.Error: Page.goto: net::ERR_BLOCKED_BY_ADMINISTRATOR at http://127.0.0.1:59585/
+Call log:
+  - navigating to "http://127.0.0.1:59585/", waiting until "load"
+!!!!!!!!!!!!!!!!!!!!!!!!!! stopping after 1 failures !!!!!!!!!!!!!!!!!!!!!!!!!!!
+1 failed in 2.60s

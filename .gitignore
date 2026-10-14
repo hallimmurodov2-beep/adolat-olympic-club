@@ -1,0 +1,32 @@
+.data/
+.env
+.env.*
+!.env.example
+!.env.production.example
+.venv/
+node_modules/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+*.db
+*.db-shm
+*.db-wal
+test-results/
+playwright-report/
+*.log
+
+# Local demonstration data and operator secrets are never source deliverables.
+.data*/
+*.sqlite
+*.sqlite3
+*.pem
+*.key
+# Deliberately checked-in, synthetic checkpoint evidence only.
+!/docs/evidence/*.log
+
+# Local macOS/editor files and recovery artifacts
+.DS_Store
+backups/
+*.gpg

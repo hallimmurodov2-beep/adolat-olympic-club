@@ -1,0 +1,11 @@
+# Install and configure Caddy on the host, outside Docker.
+# Replace this domain; point DNS to the host; allow inbound TCP 80/443.
+olympiados.school.example {
+    encode zstd gzip
+    request_body {
+        max_size 9MB
+    }
+    reverse_proxy 127.0.0.1:8000 {
+        flush_interval -1
+    }
+}

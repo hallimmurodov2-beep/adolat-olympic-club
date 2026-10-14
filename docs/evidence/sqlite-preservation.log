@@ -1,0 +1,32 @@
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade  -> bb2030abeaf7, Initial relational schema
+Revision ID: bb2030abeaf7
+Revises:
+Database initialized. Create an administrator or explicitly seed demo data.
+DEMONSTRATION DATA — not real school records
+admin        admin@demo.school.test
+teacher      teacher@demo.school.test
+physics      physics@demo.school.test
+student      student@demo.school.test
+teammate     teammate@demo.school.test
+other        other@demo.school.test
+All demo accounts use the password explicitly supplied to this command.
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.migration] Running upgrade bb2030abeaf7 -> c16a7f429444, V2 independent training Codeforces and durable storage foundation
+Revision ID: c16a7f429444
+Revises: bb2030abeaf7
+Database initialized. Create an administrator or explicitly seed demo data.
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+Database initialized. Create an administrator or explicitly seed demo data.
+INFO  [alembic.runtime.migration] Context impl SQLiteImpl.
+INFO  [alembic.runtime.migration] Will assume non-transactional DDL.
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.schemas
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.tables
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.types
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.constraints
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.defaults
+INFO  [alembic.runtime.plugins] setting up autogenerate plugin alembic.autogenerate.comments
+No new upgrade operations detected.

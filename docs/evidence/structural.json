@@ -1,0 +1,9 @@
+{
+  "original_archive_sha256": "89cfe734b395bc9be5d8a5c9d7cd5e704b9e8969eb6bb72f7d99623ad01c8d5c",
+  "original_alembic_baseline_unchanged": true,
+  "school_logo_original_bytes_unchanged": true,
+  "domain_tables": 48,
+  "postgresql_statements_compiled_offline": 96,
+  "postgresql_statements_executed": false,
+  "baseline_commit": "a901dc2e88ddf03bb56f765b2d78a5f80af5a355"
+}

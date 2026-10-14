@@ -1,0 +1,21 @@
+{
+  "static/vendor/MathJax-LICENSE": "cfc7749b96f63bd31c3c42b5c471bf756814053e847c10f3eb003417bc523d30",
+  "static/vendor/Prism-LICENSE": "2b947f0901a7ffcf08a89957da9783c0e9c6e72cb6ce8e959f501ab5409e4d2b",
+  "static/vendor/mathjax-tex-svg.js": "0383da4c22a61555f3d99877f939f00012d2583381177302987ab04760cdadf3",
+  "static/vendor/prism.js": "20e174a6b389a946b7f61ed5a6d945cd06305af35ced9dcc10727a105ee995c1",
+  "static/assets/api.js": "1fb09e6f7480b95ee3044f558f0edfd6cb0b1ccb099125567b9a3997d5c83643",
+  "static/assets/app.js": "78df8f04de18922b5759518919b31faa384435b3bb2bbb8334c48b3e1d113e2a",
+  "static/assets/i18n.js": "7072d4e5146cf653cfcb45e88cf3517e2b80167aef7d17e1f2570899c8f032d0",
+  "static/assets/pages-activities.js": "b3150a6fc5f516f3dcfd4e67b7c0d5df3bda96421746d9135d9a0f8adc8f3d78",
+  "static/assets/pages-classrooms.js": "0ce7c15461a386222d4d4f24b585146799e79e46ee46159216e88f922ac40a68",
+  "static/assets/pages-groups.js": "4ab206d48d087576c96c3262019e549455d837bb2d6804d49ff2a22cf8dbc335",
+  "static/assets/pages-home.js": "8e4eb271a61b5888cd0e871e14c27c4fe1144843edad6657eb4f0628e2982c2b",
+  "static/assets/pages-library.js": "afd0a477ab52d61c32865c86746e623053ba134f6cbbe0a7472c2803517717c5",
+  "static/assets/pages-operations.js": "7deb9c56a9ce82a35fc20f122926c8ddd20750bd33e411ac504740e4bb52f569",
+  "static/assets/pages-review.js": "8cb144cb99fbd301527b196b6b2266509a12e098a6efc64c935dae8070ce2635",
+  "static/assets/router.js": "dece99e4c3fb82595e9b6485ed9fab563b7e2a2dfee2a7a364b9f9dc09c9d7ea",
+  "static/assets/state.js": "5170113f1e9287e8e2cfeacf3c97bee1aba0e5598fd964ca659030484ba332cb",
+  "static/assets/types.js": "01ae2a5b120382f9a648ced7ee8507493a134f216d100fc61600c6c9738235d2",
+  "static/assets/ui.js": "7e3e971d7159bad24bc85920128519d42b2ecebf1a5f5b90d0859804ab5cca3d",
+  "static/assets/work-editor.js": "9d39c07f1be9625e913b343289e7e9cecd0541e663137e3b5bb280c7f7a20db4"
+}
