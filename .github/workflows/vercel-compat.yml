@@ -1,0 +1,37 @@
+name: Vercel compatibility build checks
+on:
+  push:
+    branches: [deployment/vercel-serverless-compat]
+  pull_request:
+    paths: ['app.py','vercel.json','public/**','requirements.txt']
+permissions:
+  contents: read
+jobs:
+  compatibility:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.13'
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: python -m pip install -r requirements-dev.txt -r requirements-postgres.txt
+      - run: npm ci --ignore-scripts && npm run typecheck
+      - name: Verify ASGI entrypoint and public static asset parity
+        run: |
+          python - <<'PY'
+          from app import app
+          assert len(app.routes) >= 120
+          from pathlib import Path
+          for name in ('index.html','static/assets/app.js','static/styles.css',
+           'static/brand/logo-header.png','locales/ru.json','locales/en.json'):
+              assert (Path('public')/name).is_file(),name
+          print('Vercel candidate ASGI/static structure verified')
+          PY
+      - name: Run non-browser API/security regressions
+        run: python -m pytest -q --ignore=tests/test_browser.py --ignore=tests/test_v2_browser.py
+        env:
+          CI: '1'

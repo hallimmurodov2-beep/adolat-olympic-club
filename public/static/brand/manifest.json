@@ -1,0 +1,83 @@
+{
+  "product": "Adolat Olympic Club",
+  "source_file": "school-logo-original.png",
+  "source_sha256": "e5753fcd2e51d15a605faa299d5b7ed3d96f4260f0f162e656ae8ac2946b664e",
+  "source_size": [
+    181,
+    148
+  ],
+  "source_mode": "RGB",
+  "method": "Proportional Lanczos reduction, white padded tiles, no invented transparency or detail.",
+  "files": {
+    "icon-16.png": {
+      "size": [
+        16,
+        16
+      ],
+      "sha256": "2650168548f7404f307c49dac91d7bdb9987b1398a746363fd1b8c26ca3168f5"
+    },
+    "icon-180.png": {
+      "size": [
+        180,
+        180
+      ],
+      "sha256": "ebd98158544189b0c755e055af68b7513bbcce60ba92523740fe4ac358c0e918"
+    },
+    "icon-192.png": {
+      "size": [
+        192,
+        192
+      ],
+      "sha256": "44cabef58876a16630dde7ba82d36aff4d63980a8b52020dcfc860377199b9e5"
+    },
+    "icon-32.png": {
+      "size": [
+        32,
+        32
+      ],
+      "sha256": "76b1a6b21d8c12b5525584976d8ed2e4350cff0f8f19b372b5e801ed2fe75803"
+    },
+    "icon-48.png": {
+      "size": [
+        48,
+        48
+      ],
+      "sha256": "3a2e7a3b402c64a4811af0d0e87a5217ac54e09a6bcca0d0f3e7c688fde7b8d6"
+    },
+    "icon-512.png": {
+      "size": [
+        512,
+        512
+      ],
+      "sha256": "be818bfdc82936f20fedccb2d10e0ccc46579580005a74cfee7a830bca7f3d45"
+    },
+    "logo-header-2x.png": {
+      "size": [
+        128,
+        104
+      ],
+      "sha256": "4f38cc19555511608e0bbc7a0cb658cb50685ebca0675b2ac7406730e1af0aa9"
+    },
+    "logo-header.png": {
+      "size": [
+        64,
+        52
+      ],
+      "sha256": "023576428df1269f251ab7f25e89fe19d857a300fdd5485c3bff55ec4f29f845"
+    },
+    "logo-login.png": {
+      "size": [
+        181,
+        148
+      ],
+      "sha256": "f8d0c0b91d3360184352c7d37780da6f25a0e5976a2a29cdd90ca8f497aedab6"
+    },
+    "school-logo-original.png": {
+      "size": [
+        181,
+        148
+      ],
+      "sha256": "e5753fcd2e51d15a605faa299d5b7ed3d96f4260f0f162e656ae8ac2946b664e"
+    }
+  }
+}
