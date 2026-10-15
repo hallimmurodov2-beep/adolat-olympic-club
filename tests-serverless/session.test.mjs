@@ -1,6 +1,6 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
-import {onRequest} from '../../functions/api/session/[[path]].js';
+import {onRequest} from '../functions/api/session/[[path]].js';
 const base='https://staging.example.pages.dev';
 const env={BROKER_ENABLED:'yes-reviewed',SUPABASE_URL:'https://sample.supabase.co',
  SUPABASE_PUBLISHABLE_KEY:'sb_publishable_dummy',
