@@ -3,11 +3,7 @@
   "functions": {
     "app.py": {
       "maxDuration": 60,
-      "includeFiles": [
-        "static/**",
-        "locales/**",
-        "prod-ca-2021.crt"
-      ]
+      "includeFiles": "{static/**,locales/**,prod-ca-2021.crt}"
     }
   },
   "headers": [
