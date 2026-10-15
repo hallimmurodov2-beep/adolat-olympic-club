@@ -6,11 +6,21 @@ const allowed = Deno.env.get('SESSION_ORIGIN') ?? '';
 function respond(body:unknown,status=200) {
  return new Response(JSON.stringify(body),{status,headers:{
  'Content-Type':'application/json','Cache-Control':'no-store',
- 'X-Content-Type-Options':'nosniff','Vary':'Origin'}});
+ 'X-Content-Type-Options':'nosniff','Vary':'Origin',
+ 'Access-Control-Allow-Origin':allowed}});
 }
 Deno.serve(async request=>{
- if(!allowed.startsWith('https://')||request.method!=='POST'
- ||request.headers.get('Origin')!==allowed) return respond({error:'forbidden'},403);
+ if(!allowed.startsWith('https://')||request.headers.get('Origin')!==allowed)
+   return respond({error:'forbidden'},403);
+ if(request.method==='OPTIONS') {
+   return new Response(null,{status:204,headers:{
+     'Access-Control-Allow-Origin':allowed,
+     'Access-Control-Allow-Headers':'authorization, apikey, content-type',
+     'Access-Control-Allow-Methods':'POST, OPTIONS',
+     'Access-Control-Max-Age':'600','Vary':'Origin'
+   }});
+ }
+ if(request.method!=='POST') return respond({error:'method_not_allowed'},405);
  const url=Deno.env.get('SUPABASE_URL');
  const publishable=Deno.env.get('SUPABASE_PUBLISHABLE_KEY');
  const secret=Deno.env.get('SUPABASE_SERVICE_ROLE_KEY');
