@@ -1,0 +1,35 @@
+name: Serverless migration M6–M8 checks
+on:
+  push:
+    branches: [migration/serverless-m6-m8]
+  pull_request:
+    paths:
+      - 'supabase/functions/**'
+      - 'supabase/migrations/**'
+      - 'supabase/tests/**'
+      - 'frontend/services/**'
+      - 'scripts/verify-staging.mjs'
+permissions:
+  contents: read
+jobs:
+  edge-and-static:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck
+      - run: npm run build:cloudflare
+      - run: node --check scripts/verify-staging.mjs
+      - uses: denoland/setup-deno@v2
+        with:
+          deno-version: v2.x
+      - name: Typecheck isolated Edge Functions
+        run: |
+          deno check supabase/functions/codeforces-sync/index.ts
+          deno check supabase/functions/upload-process/index.ts
+          deno check supabase/functions/file-delivery/index.ts
+          deno check supabase/functions/maintenance/index.ts
