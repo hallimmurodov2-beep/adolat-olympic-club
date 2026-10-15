@@ -1,0 +1,49 @@
+name: Cloudflare/Supabase migration foundation
+on:
+  push:
+    branches:
+      - migration/cloudflare-supabase-m0-m2
+  pull_request:
+    paths:
+      - 'supabase/migrations/**'
+      - 'supabase/tests/**'
+      - 'supabase/config.toml'
+      - 'scripts/build-cloudflare.mjs'
+      - 'package.json'
+permissions:
+  contents: read
+jobs:
+  static-shell:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+          cache: npm
+      - run: npm ci --ignore-scripts
+      - run: npm run typecheck
+      - run: npm run build:cloudflare
+      - name: Inspect expected static files and route isolation
+        run: |
+          test -f dist/index.html
+          test -f dist/static/assets/app.js
+          test -f dist/static/styles.css
+          test -f dist/static/brand/logo-login.png
+          test -f dist/locales/ru.json
+          test -f dist/locales/en.json
+          grep -q 'session/\*' dist/_routes.json
+          ! grep -RE 'sb_secret_|service_role' dist
+  database-foundation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: supabase/setup-cli@v1
+        with:
+          version: latest
+      - run: supabase start
+      - run: supabase db reset
+      - run: supabase test db
+      - if: always()
+        run: supabase stop --no-backup || true

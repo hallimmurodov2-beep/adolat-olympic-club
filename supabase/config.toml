@@ -1,0 +1,18 @@
+# New serverless staging only. Never link this directory to legacy Supabase.
+project_id = "adolat-serverless-local"
+[api]
+enabled = true
+port = 54321
+schemas = ["api"]
+extra_search_path = ["public", "extensions"]
+max_rows = 1000
+[db]
+port = 54322
+major_version = 17
+[auth]
+enabled = true
+enable_signup = false
+enable_anonymous_sign_ins = false
+jwt_expiry = 900
+[auth.email]
+enable_signup = false
