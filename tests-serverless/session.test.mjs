@@ -7,7 +7,7 @@ const env={BROKER_ENABLED:'yes-reviewed',SUPABASE_URL:'https://sample.supabase.c
  SESSION_ORIGIN:base};
 function request(path,method='GET',opts={}) {
  const headers=new Headers(opts.headers||{});
- if(method==='POST'&&!opts.noOrigin) headers.set('Origin',base);
+ if(method==='POST'&&!opts.noOrigin&&!headers.has('Origin')) headers.set('Origin',base);
  return {env:{...env,...opts.env},request:new Request(base+'/api/session/'+path,{
  method,headers,body:opts.body})};
 }
