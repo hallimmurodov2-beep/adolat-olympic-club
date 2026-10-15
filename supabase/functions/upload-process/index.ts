@@ -29,7 +29,8 @@ async function storage(method:string,bucket:string,name:string,jwt:string,body?:
  if(!/^(adolat-quarantine|adolat-files)$/.test(bucket)||!/^([a-z-]+)\/[a-z0-9-\/]+$/.test(name)) {
   throw Error('invalid_object_name');
  }
- const res=await fetch(URL_BASE+'/storage/v1/object/'+bucket+'/'+name,{
+ const objectUrl=URL_BASE+'/storage/v1/object/'+(method==='GET'?'authenticated/':'')+bucket+'/'+name;
+ const res=await fetch(objectUrl,{
  method,headers:{apikey:SECRET,Authorization:'Bearer '+SECRET,
  ...(body?{'Content-Type':mime||'application/octet-stream','x-upsert':'false'}:{})},
  body:body?Uint8Array.from(body).buffer:undefined,redirect:'error',signal:AbortSignal.timeout(12000)});
