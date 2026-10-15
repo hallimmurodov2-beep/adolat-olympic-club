@@ -2,10 +2,11 @@
   "name": "olympiados-frontend",
   "version": "2.0.0-m1.1",
   "private": true,
-  "description": "Adolat Olympic Club \u2014 retained TypeScript client, V2 Informatics milestone",
+  "description": "Adolat Olympic Club — retained TypeScript client, V2 Informatics milestone",
   "scripts": {
     "build": "tsc",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "build:cloudflare": "npm run build && node scripts/build-cloudflare.mjs"
   },
   "devDependencies": {
     "typescript": "5.8.3"
