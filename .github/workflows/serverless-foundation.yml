@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - migration/cloudflare-supabase-m0-m2
+      - migration/serverless-m3-m5
   pull_request:
     paths:
       - 'supabase/migrations/**'
@@ -10,6 +11,8 @@ on:
       - 'supabase/config.toml'
       - 'scripts/build-cloudflare.mjs'
       - 'package.json'
+      - 'functions/**'
+      - 'tests-serverless/**'
 permissions:
   contents: read
 jobs:
@@ -22,6 +25,7 @@ jobs:
           node-version: '22'
           cache: npm
       - run: npm ci --ignore-scripts
+      - run: node --test tests-serverless/*.test.mjs
       - run: npm run typecheck
       - run: npm run build:cloudflare
       - name: Inspect expected static files and route isolation
