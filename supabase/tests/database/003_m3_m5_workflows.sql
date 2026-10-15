@@ -48,7 +48,7 @@ SELECT is((api.save_personal_plan('36666666-6666-4666-8666-666666666666','My goa
 SELECT ok(api.add_training_item((SELECT id FROM app.training_plans
  WHERE cycle_id='36666666-6666-4666-8666-666666666666'),
  '39999999-9999-4999-8999-999999999999','Practice') IS NOT NULL,'Can add private training item');
-SELECT throws_ok($SELECT api.leave_training_circle('38888888-8888-4888-8888-888888888888')$,
+SELECT throws_ok($$SELECT api.leave_training_circle('38888888-8888-4888-8888-888888888888')$$,
 '23514','last_facilitator','Last facilitator cannot abandon circle');
 RESET ROLE;
 SELECT ok(NOT has_table_privilege('authenticated','app_private.problem_secrets','SELECT'),'No solution grant');
