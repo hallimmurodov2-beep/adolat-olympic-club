@@ -1,7 +1,7 @@
 -- M3-M5 executable, transaction-rolled-back RLS/RPC integration.
 -- Tests actual PostgreSQL role calls with signed claim contexts, not browser mocks.
 BEGIN;
-SELECT plan(15);
+SELECT plan(14);
 INSERT INTO auth.users(id,instance_id,aud,role,email,encrypted_password,email_confirmed_at,created_at,updated_at) VALUES
 ('31111111-1111-4111-8111-111111111111','00000000-0000-0000-0000-000000000000','authenticated','authenticated','m35-teacher@example.invalid','',now(),now(),now()),
 ('32222222-2222-4222-8222-222222222222','00000000-0000-0000-0000-000000000000','authenticated','authenticated','m35-student-a@example.invalid','',now(),now(),now()),
