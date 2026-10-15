@@ -32,12 +32,12 @@ async function storage(method:string,bucket:string,name:string,jwt:string,body?:
  const res=await fetch(URL_BASE+'/storage/v1/object/'+bucket+'/'+name,{
  method,headers:{apikey:SECRET,Authorization:'Bearer '+SECRET,
  ...(body?{'Content-Type':mime||'application/octet-stream','x-upsert':'false'}:{})},
- body:body?body:undefined,redirect:'error',signal:AbortSignal.timeout(12000)});
+ body:body?Uint8Array.from(body).buffer:undefined,redirect:'error',signal:AbortSignal.timeout(12000)});
  if(!res.ok)throw Error('storage_unavailable');
  return res;
 }
 async function hex(bytes:Uint8Array) {
- const digest=await crypto.subtle.digest('SHA-256',bytes);
+ const digest=await crypto.subtle.digest('SHA-256',Uint8Array.from(bytes));
  return Array.from(new Uint8Array(digest),x=>x.toString(16).padStart(2,'0')).join('');
 }
 async function normalize(raw:Uint8Array,mime:string) {
@@ -60,14 +60,13 @@ async function normalize(raw:Uint8Array,mime:string) {
  await initializeImageMagick(data);
  })();
  await imageRuntime;
- let bytes:Uint8Array|null=null;
- ImageMagick.read(raw,(image)=>{
+ const bytes=ImageMagick.read(raw,(image):Uint8Array=>{
    if(image.width<1||image.height<1||image.width*image.height>16000000)
     throw Error('oversized_pixels');
    image.strip();
-   bytes=image.write(MagickFormat.Png,(out)=>Uint8Array.from(out));
+   return image.write(MagickFormat.Png,(out)=>Uint8Array.from(out));
  });
- if(!bytes||bytes.length<1||bytes.length>MAX) throw Error('invalid_image');
+ if(!(bytes instanceof Uint8Array)||bytes.length<1||bytes.length>MAX) throw Error('invalid_image');
  return {bytes,mime:'image/png'};
 }
 export async function processUpload(request:Request) {
